@@ -1,0 +1,15 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "This a Backend System for the Meme application Create for Meme application",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Meme",
+    "Application"
+  ],
+  "author": "Harsh Raithatha",
+  "license": "ISC"
+}
