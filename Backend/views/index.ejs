@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        input[type="text"], input[type="file"], button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        p {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>File Upload Form</h1>
+        <form action="/api" method="POST" enctype="multipart/form-data">
+            <input type="text" name="description" placeholder="Enter description"><br><br>
+            <input type="text" name="title" placeholder="Enter title"><br><br>
+            <input type="file" name="image" accept="image/*"><br><br>
+            <button type="submit">Upload File</button>
+        </form>
+        <p><%= message %></p>
+    </div>
+    <script>
+        let p = document.querySelector('p').innerText.trim();
+        setTimeout(() => {
+            if (p === "internal server error") {
+                alert('Please choose a file');
+                window.location.href = '/';
+            } else if (p === "File Uploaded Successfully") {
+                alert('File Uploaded Successfully');
+                window.location.href = '/';
+            }
+        }, 100);
+    </script>
+</body>
+</html>
