@@ -8,6 +8,6 @@ const infoSchema = new mongoose.Schema({
     account: String
 });
 
-const Info = mongoose.model('Info', infoSchema); // Corrected mongoose spelling
+const Info = mongoose.model('memeData', infoSchema); // Corrected mongoose spelling
 
 module.exports = Info;

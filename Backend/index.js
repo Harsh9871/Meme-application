@@ -6,16 +6,16 @@ const dotenv = require('dotenv');
 dotenv.config();
 app.set('view engine', 'ejs');
 const mongoose = require('mongoose');
-mongoose.connect("mongodb://localhost:27017/memeDB").then(()=> console.log("Connected to database")).catch((err)=> console.log(err));
+mongoose.connect("mongodb://localhost:27017/memeApplication").then(()=> console.log("Connected to database")).catch((err)=> console.log(err));
 
 const Info = require('./Modules/info.js');
 const PORT = process.env.PORT || 3000;
 
 const storage = multer.diskStorage({
-    destination: function (req, file, cb) {
+    destination: (_req, _file, cb)=> {
         cb(null, 'uploads/'); // Specify the directory where files will be stored
     },
-    filename: function (req, file, cb) {
+    filename: (_req, file, cb)=> {
         // Rename the uploaded file
         cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
     }
@@ -69,7 +69,14 @@ app.post('/api', upload.single('image'), async (req, res, _next) => {
         }
     }
 });
-
+app.post('/ack/:apiKey',(req,res)=>{
+    const {apiKey} = req.params;
+    if(apiKey === process.env.API_KEY){
+        res.status(200).json({status:"Sucess",title: 'Meme Application ack', message: "API Key is valid"});
+    }else{
+        res.status(400).json({status:"Sucess",title: 'Meme Application ack', message: "API Key is invalid"});
+    }
+})
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });
