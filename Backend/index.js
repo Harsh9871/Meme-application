@@ -14,7 +14,7 @@ const PORT = process.env.PORT || 3000;
 const storage = multer.diskStorage({
     destination: (_req, _file, cb)=> {
         cb(null, 'uploads/'); // Specify the directory where files will be stored
-    },
+    },  
     filename: (_req, file, cb)=> {
         // Rename the uploaded file
         cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
@@ -40,6 +40,10 @@ app.get('/', (_req, res) => {
     res.render('index', { title: 'Meme Application main', message: "" });
 });
 
+app.get('/api', (req, res) => {
+    console.log(req);
+    res.json({ title: 'Meme Application false', message: "Please upload a file" });
+});
 app.post('/api', upload.single('image'), async (req, res, _next) => {
     try {
         const file = req.file;

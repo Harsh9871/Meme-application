@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">MemeApplication</string>
+    <string name="enter_ip_address">Enter Ip address</string>
+    <string name="enter_server">Enter Server</string>
 </resources>
