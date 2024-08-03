@@ -73,14 +73,18 @@ app.post('/api', upload.single('image'), async (req, res, _next) => {
         }
     }
 });
-app.post('/ack/:apiKey',(req,res)=>{
+app.get('/ack/:apiKey',(req,res)=>{
     const {apiKey} = req.params;
     if(apiKey === process.env.API_KEY){
         res.status(200).json({status:"Sucess",title: 'Meme Application ack', message: "API Key is valid"});
+        console.log(apiKey);
     }else{
-        res.status(400).json({status:"Sucess",title: 'Meme Application ack', message: "API Key is invalid"});
+        res.status(400).json({status:"fail", message: "API Key is invalid"});
+        console.log(apiKey);
     }
 })
+
+
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });
