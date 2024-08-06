@@ -31,7 +31,9 @@ class MainActivity : AppCompatActivity() {
         button.setOnClickListener {
             val ipAddress = findViewById<EditText>(R.id.ipAddress)
             val ipAddressReal =ipAddress.text.toString()
-            val url = "$ipAddressReal:80/ack/abc"
+            val url = "192.168.137.104:80/ack/abc"
+            ipAddress.setText(url)
+            // Create a JsonObjectRequest to send the GET request
             val jsonObjectRequest = JsonObjectRequest(
                Request.Method.GET, url, null,
                 { response ->

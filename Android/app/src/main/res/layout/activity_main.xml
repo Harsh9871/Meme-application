@@ -7,6 +7,7 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity"
     android:background="@drawable/background_image">
+
     <EditText
         android:id="@+id/ipAddress"
         android:layout_width="204dp"
@@ -16,14 +17,14 @@
         android:hint="@string/enter_ip_address"
         android:padding="10dp"
         android:textColor="@color/white"
-        android:textColorHint="@color/gray_hint"
+        android:textColorHint="#757575"
         app:layout_constraintBottom_toTopOf="@+id/button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.88"
-        tools:ignore="DuplicateIds,LabelFor,TextFields,SpeakableTextPresentCheck" />
+        tools:ignore="DuplicateIds,LabelFor,TextFields,SpeakableTextPresentCheck,TextContrastCheck" />
 
     <Button
         android:id="@+id/button"
